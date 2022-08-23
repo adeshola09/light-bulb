@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import lightOff from "./bulb/lightOff.png";
+import lightOn from "./bulb/lightOn.png";
 
-function App() {
+export const App = () => {
+  const [Bulb, setBulb] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={Bulb ?lightOn : lightOff} alt="bulb-off" />
+      <div className="bulb">
+        <button onClick={() => setBulb(Bulb === false ? true : true)}>
+          Switch On
+        </button>
+        <button id="buttonOff"  onClick={() => setBulb(Bulb === true ? false : false)}>
+          Switch Off
+        </button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
